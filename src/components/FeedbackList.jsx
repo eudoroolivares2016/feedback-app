@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {motion, AnimatePresence} from 'framer-motion'
+ 
 import FeedbackItem from './FeedbackItem'
 
 function FeedbackList({feedback, handleDelete}) {
@@ -7,15 +9,26 @@ function FeedbackList({feedback, handleDelete}) {
     return <p> No feedback yet</p>
      
   }
-
+  // Animate Presence is just causing the fade effect
   return (
-    feedback.map( (item) => (<div>
-        <FeedbackItem 
-        handleDelete={handleDelete}
-        key={item.id} item={item}  />
-    </div>) 
+    <div className='feedback-list'>
+      <AnimatePresence>
+      { 
+        feedback.map( (item) => (
+          <motion.div
+            key={item.id}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+          >
+              <FeedbackItem 
+              handleDelete={handleDelete}
+              key={item.id} item={item}  />
+          </motion.div>)) 
+      }
+      </AnimatePresence>
+    </div>
     )
-  )
 }
 
 export default FeedbackList
