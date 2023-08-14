@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 function Header({text}) {
   return (
     <>
-        <div>Feedback Application</div>
+        <h1 className='header'>Feedback Application</h1>
     {text}
     </>
 
