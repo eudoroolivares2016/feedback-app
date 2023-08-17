@@ -189,6 +189,7 @@ input:focus {
  * document */
 .about-link {
   display: flex;
+  color: 'white';
   justify-content: flex-end;
 }
 
